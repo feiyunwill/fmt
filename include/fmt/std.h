@@ -697,11 +697,9 @@ template <> struct formatter<std::exception_ptr> : formatter<std::exception> {
     } catch (const std::exception& e) {
       return formatter<std::exception>::format(e, ctx);
     } catch (...) {
-      return this->write_padded(ctx, string_view("unknown exception"));
     }
-#else
-    return this->write_padded(ctx, string_view("unknown exception"));
 #endif  // FMT_USE_EXCEPTIONS
+    return this->write_padded(ctx, string_view("unknown exception"));
   }
 };
 
