@@ -1,12 +1,12 @@
-// Formatting library for C++ - the base API for char/UTF-8
+// Formatting library for C++ - the core API for char/UTF-8
 //
 // Copyright (c) 2012 - present, Victor Zverovich and {fmt} contributors
 // All rights reserved.
 //
 // For the license information refer to format.h.
 
-#ifndef FMT_BASE_H_
-#define FMT_BASE_H_
+#ifndef FMT_CORE_H_
+#define FMT_CORE_H_
 
 #if defined(FMT_IMPORT_STD) && !defined(FMT_MODULE)
 #  define FMT_MODULE
@@ -2952,7 +2952,9 @@ FMT_PRAGMA_MSVC(warning(pop))
 FMT_END_EXPORT
 FMT_END_NAMESPACE
 
-#ifdef FMT_HEADER_ONLY
+// Using fmt::format via fmt/core.h has been deprecated since version 11
+// and now requires an explicit opt in.
+#if defined(FMT_HEADER_ONLY) || defined(FMT_DEPRECATED_HEAVY_CORE)
 #  include "format.h"
 #endif
-#endif  // FMT_BASE_H_
+#endif  // FMT_CORE_H_
